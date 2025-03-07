@@ -1,0 +1,103 @@
+Table of Contents
+Introduction
+Project Overview
+Dataset
+Data Preprocessing
+Exploratory Data Analysis (EDA)
+Model Training & Evaluation
+Results
+Conclusion & Future Work
+How to Run the Project
+1. Introduction
+Customer churn refers to the loss of customers over time. This project aims to build a machine learning model that predicts customer churn, helping businesses proactively take retention measures.
+
+2. Project Overview
+🔹 Goal: Build a churn prediction model using Logistic Regression and Random Forest.
+🔹 Approach:
+✔ Clean and preprocess data
+✔ Perform exploratory data analysis (EDA)
+✔ Train machine learning models before and after balancing the dataset
+✔ Evaluate models and optimize performance
+
+3. Dataset
+📌 Dataset Name: Telco Customer Churn Dataset
+📌 Source: Available on Kaggle
+
+Feature	Description
+gender	Customer’s gender (Male/Female)
+SeniorCitizen	Whether the customer is a senior citizen (1 = Yes, 0 = No)
+tenure	Number of months the customer has stayed
+MonthlyCharges	Customer’s monthly charges
+TotalCharges	Total amount billed
+Contract	Type of contract (Month-to-month, One year, Two years)
+Churn	Target variable (Yes/No)
+4. Data Preprocessing
+✔ Handled Missing Values: TotalCharges converted to numeric and missing values filled.
+✔ Encoded Categorical Features: Used One-Hot Encoding for categorical variables.
+✔ Scaled Numerical Features: Applied StandardScaler to tenure, MonthlyCharges, and TotalCharges.
+✔ Balanced Dataset Using SMOTE: Increased instances of churned customers to prevent bias.
+
+5. Exploratory Data Analysis (EDA)
+✔ Class Imbalance Check: Most customers did not churn, making the dataset imbalanced.
+✔ Feature Correlation: Strong correlation found between contract type and churn.
+✔ Visualization Used:
+
+Bar plot for churn distribution
+Heatmap for correlation analysis
+6. Model Training & Evaluation
+Models Used:
+✔ Before SMOTE: Logistic Regression, Random Forest
+✔ After SMOTE: Models retrained on a balanced dataset
+
+Performance Comparison:
+Model	Accuracy (Before SMOTE)	Accuracy (After SMOTE)
+Logistic Regression	82%	76%
+Random Forest	80%	77.5%
+📌 Key Insights:
+
+Random Forest outperformed Logistic Regression after balancing.
+SMOTE improved recall, helping to detect more churned customers.
+7. Results
+🔹 Most Important Features Affecting Churn:
+✔ Tenure – Shorter tenure leads to higher churn.
+✔ Payment Method – Electronic check users churn more.
+✔ Monthly Charges – Higher charges correlate with higher churn.
+
+📌 Visualization Used: Feature importance bar chart.
+
+8. Conclusion & Future Work
+✅ Key Takeaways:
+
+Machine learning can effectively predict churn and help businesses retain customers.
+Random Forest performed best, providing higher recall for churned customers.
+SMOTE helped address class imbalance, improving recall.
+🚀 Next Steps:
+
+Hyperparameter tuning to further improve accuracy.
+Deploy the model using Flask/Streamlit API.
+Integrate real-time predictions for businesses.
+9. How to Run the Project
+Step 1: Clone Repository
+bash
+Copy
+Edit
+git clone https://github.com/your-username/churn-prediction.git
+cd churn-prediction
+Step 2: Install Dependencies
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Step 3: Run the Model
+python
+Copy
+Edit
+python churn_model.py
+Step 4: Run the API (If Deploying)
+bash
+Copy
+Edit
+python app.py
+Step 5: Test Predictions
+Send a POST request with sample data to localhost:5000/predict to get a churn prediction.
+
